@@ -203,7 +203,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-shrink-0 w-14 h-14 bg-emerald-100 dark:bg-emerald-900/20 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl shadow-sm">1</div>
                 <div>
-                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">WhatsApp'ta görüntülemek istediğiniz sohbeti açın</h4>
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">WhatsApp&apos;ta görüntülemek istediğiniz sohbeti açın</h4>
                   <p className="text-gray-600 dark:text-gray-400">İster bireysel sohbet, ister grup sohbeti olsun.</p>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-shrink-0 w-14 h-14 bg-emerald-100 dark:bg-emerald-900/20 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl shadow-sm">3</div>
                 <div>
-                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">"Diğer" {'>'} "Sohbeti Dışa Aktar" seçeneğini seçin</h4>
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">&quot;Diğer&quot; &gt; &quot;Sohbeti Dışa Aktar&quot; seçeneğini seçin</h4>
                   <p className="text-gray-600 dark:text-gray-400">WhatsApp, sohbeti dışa aktarmanıza izin verecektir.</p>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex-shrink-0 w-14 h-14 bg-emerald-100 dark:bg-emerald-900/20 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-xl shadow-sm">4</div>
                 <div>
-                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">"Medya olmadan" veya "Medya ile" seçeneğini belirleyin</h4>
+                  <h4 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">&quot;Medya olmadan&quot; veya &quot;Medya ile&quot; seçeneğini belirleyin</h4>
                   <p className="text-gray-600 dark:text-gray-400">Medya ile seçeneği, fotoğraf ve videoları zip dosyası olarak dışa aktarır.</p>
                 </div>
               </div>
@@ -300,7 +300,14 @@ export default function Home() {
               </p>
               <a href="https://www.buymeacoffee.com/raventrk" target="_blank" rel="noopener noreferrer" 
                  className="inline-block transform hover:scale-105 transition-transform">
-                <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=❤️&slug=raventrk&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" className="h-10" />
+                <Image 
+                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=❤️&slug=raventrk&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" 
+                  alt="Buy Me A Coffee" 
+                  width={160} 
+                  height={40}
+                  className="h-10"
+                  unoptimized
+                />
               </a>
             </div>
           </div>

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import ThemeToggle from '../../components/ThemeToggle';
 import { getMediaFile } from '../../lib/indexedDb';
 import { openWhatsAppDB } from '../../lib/indexedDb';
-import { parseWhatsAppChat, formatTime, formatMessageContent, formatTimestampInOriginalFormat, ParsedChat, ChatMessage } from '../../lib/chatParser';
+import { parseWhatsAppChat, formatMessageContent, formatTimestampInOriginalFormat, ParsedChat, ChatMessage } from '../../lib/chatParser';
 
 // MessageItem bileşeni - bir sohbet mesajını görüntüler
 interface MessageItemProps {
@@ -24,9 +24,7 @@ interface MessageItemProps {
   chatData: ParsedChat | null;
   setChatData: React.Dispatch<React.SetStateAction<ParsedChat | null>>;
   createMarkup: (content: string) => { __html: string };
-  formatTime: (date: Date) => string;
   formatDateHeader: (date: Date) => string;
-  formatTimestamp: (date: Date, originalTimestamp: string) => string;
 }
 
 const MessageItem = ({ 
@@ -44,9 +42,7 @@ const MessageItem = ({
   chatData,
   setChatData,
   createMarkup,
-  formatTime,
-  formatDateHeader,
-  formatTimestamp
+  formatDateHeader
 }: MessageItemProps) => {
   const prevMessage = index > 0 ? filteredMessages[index - 1] : null;
   const isSameGroup = !showSenderName && prevMessage && 
@@ -814,8 +810,6 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
     return { __html: formatMessageContent(content) };
   };
   
-  
-  
   // Tarih değişimini kontrol eder
   const isDifferentDay = (index: number, messages: ChatMessage[]) => {
     if (index === 0) return true;
@@ -1283,9 +1277,7 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
                       chatData={chatData}
                       setChatData={setChatData}
                       createMarkup={createMarkup}
-                      formatTime={formatTime}
                       formatDateHeader={formatDateHeader}
-                      formatTimestamp={(date, originalTimestamp) => formatTimestampInOriginalFormat(date, originalTimestamp)}
                     />
                   </div>
                 );
@@ -1320,9 +1312,7 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
                     chatData={chatData}
                     setChatData={setChatData}
                     createMarkup={createMarkup}
-                    formatTime={formatTime}
                     formatDateHeader={formatDateHeader}
-                    formatTimestamp={(date, originalTimestamp) => formatTimestampInOriginalFormat(date, originalTimestamp)}
                   />
                 );
               })}
