@@ -5,7 +5,7 @@
 WhatsApp Sohbet Görüntüleyici, WhatsApp'tan dışa aktarılmış sohbet metinlerini (`.txt` veya `.zip` formatında) görüntülemek için geliştirilmiş modern bir web uygulamasıdır. Uygulama hem bireysel hem de grup sohbetlerini destekler ve resim, video, ses ve belge gibi medya dosyalarını görüntüleyebilir.
 
 <p align="center">
-<a href="https://www.buymeacoffee.com/yourname"><img src="https://img.buymeacoffee.com/button-api/?text=Bana bir kahve ısmarla&emoji=&slug=yourname&button_colour=40DCA5&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" height="40px"></a>
+<a href="https://www.buymeacoffee.com/raventrk"><img src="https://img.buymeacoffee.com/button-api/?text=Bana bir kahve ısmarla&emoji=&slug=yourname&button_colour=40DCA5&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" height="40px"></a>
 </p>
 
 ![Uygulama Önizleme](https://placeholder-for-app-screenshot.png)
