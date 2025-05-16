@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #10b981;
+  --primary-dark: #059669;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --primary: #10b981;
+  --primary-dark: #34d399;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* WhatsApp stili mesaj balonları */
+@layer components {
+  .chat-bubble {
+    @apply relative max-w-md rounded-lg p-3 mb-2;
+  }
+
+  .chat-bubble-received {
+    @apply bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-sm;
+  }
+
+  .chat-bubble-sent {
+    @apply bg-emerald-100 dark:bg-emerald-800 text-gray-800 dark:text-gray-100 ml-auto;
+  }
+
+  .chat-time {
+    @apply text-xs text-gray-500 dark:text-gray-400 ml-1 mt-1 text-right;
+  }
+
+  .chat-system-message {
+    @apply bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300 text-xs py-1 px-3 rounded-md mx-auto my-2 max-w-xs text-center;
+  }
+}
