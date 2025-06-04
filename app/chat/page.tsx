@@ -51,8 +51,8 @@ const MessageItem = ({
   // Sistem mesajları
   if (message.sender === 'System') {
     return (
-      <div key={message.id} className="my-3 flex justify-center">
-        <div className="bg-white dark:bg-[#111111] px-3 py-1.5 rounded-lg text-xs text-gray-500 dark:text-gray-400 shadow-sm">
+      <div key={message.id} className="my-2 sm:my-3 flex justify-center">
+        <div className="bg-white dark:bg-[#111111] px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs text-gray-500 dark:text-gray-400 shadow-sm">
           {message.content}
         </div>
       </div>
@@ -61,8 +61,8 @@ const MessageItem = ({
   
   // Tarih başlığı
   const dateHeader = showDateHeader && (
-    <div className="my-3 flex justify-center">
-      <div className="bg-[#25D366] dark:bg-emerald-700 px-4 py-1.5 rounded-full text-xs text-white font-medium shadow-sm">
+    <div className="my-2 sm:my-3 flex justify-center">
+      <div className="bg-[#25D366] dark:bg-emerald-700 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs text-white font-medium shadow-sm">
         {formatDateHeader(message.date)}
       </div>
     </div>
@@ -75,24 +75,24 @@ const MessageItem = ({
     <div 
       ref={isLastMessage ? lastMessageRef : null}
       key={message.id} 
-      className={`${isSameGroup ? 'mt-1' : 'mt-4'}`}
+      className={`${isSameGroup ? 'mt-1' : 'mt-3 sm:mt-4'}`}
     >
       {showDateHeader && dateHeader}
       
       {showSenderName && !isSentByMe && (
-        <div className="text-sm font-medium text-emerald-700 dark:text-emerald-500 ml-2 mb-1">
+        <div className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-500 ml-2 mb-0.5 sm:mb-1">
           {message.sender}
         </div>
       )}
       
       <div className={`flex ${isSentByMe ? 'justify-end' : 'justify-start'}`}>
         <div 
-          className={`relative max-w-[85%] md:max-w-[70%] rounded-2xl px-3.5 py-2.5 shadow-sm
+          className={`relative max-w-[90%] sm:max-w-[85%] md:max-w-[70%] rounded-2xl px-3 sm:px-3.5 py-2 sm:py-2.5 shadow-sm
             ${isSentByMe 
               ? 'bg-[#dcf8c6] dark:bg-emerald-700 text-gray-800 dark:text-white rounded-tr-none' 
               : 'bg-white dark:bg-[#111111] text-gray-800 dark:text-white rounded-tl-none'
             }
-            ${message.isEmoji ? 'text-4xl bg-transparent dark:bg-transparent shadow-none px-1' : ''}
+            ${message.isEmoji ? 'text-3xl sm:text-4xl bg-transparent dark:bg-transparent shadow-none px-1' : ''}
           `}
         >
           {/* Mesaj üçgeni */}
@@ -131,7 +131,7 @@ const MessageItem = ({
                     <Image 
                       src={message.mediaUrl} 
                       alt="Görsel" 
-                      className="rounded-lg max-w-full max-h-60 object-contain mb-2"
+                      className="rounded-lg max-w-full max-h-48 sm:max-h-60 object-contain mb-1 sm:mb-2"
                       width={300}
                       height={200}
                       style={{ maxHeight: '15rem', width: 'auto' }}
@@ -143,7 +143,7 @@ const MessageItem = ({
                         }
                       }}
                     />
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                    <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                       Görsel: {message.mediaName || 'Resim'}
                     </div>
                   </div>
@@ -165,7 +165,7 @@ const MessageItem = ({
                     <Image 
                       src={message.mediaUrl} 
                       alt="GIF" 
-                      className="rounded-lg max-w-full max-h-60 object-contain mb-2"
+                      className="rounded-lg max-w-full max-h-48 sm:max-h-60 object-contain mb-1 sm:mb-2"
                       width={300}
                       height={200}
                       style={{ maxHeight: '15rem', width: 'auto' }}
@@ -176,7 +176,7 @@ const MessageItem = ({
                         }
                       }}
                     />
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                    <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                       GIF: {message.mediaName || 'Animasyon'}
                     </div>
                   </div>
@@ -187,7 +187,7 @@ const MessageItem = ({
                     <video 
                       src={message.mediaUrl} 
                       controls 
-                      className="max-w-full max-h-60 object-contain cursor-pointer"
+                      className="max-w-full max-h-48 sm:max-h-60 object-contain cursor-pointer"
                       onClick={(e) => {
                         e.preventDefault();
                         if (message.mediaUrl) {
@@ -204,7 +204,7 @@ const MessageItem = ({
                         }
                       }}
                     ></video>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Video: {message.mediaName || 'Video'}
                     </div>
                   </div>
@@ -215,14 +215,14 @@ const MessageItem = ({
                     <audio 
                       src={message.mediaUrl} 
                       controls 
-                      className="w-full max-w-[250px]"
+                      className="w-full max-w-[200px] sm:max-w-[250px]"
                       onLoadedData={() => {
                         if (chatContainerRef.current) {
                           chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
                         }
                       }}
                     ></audio>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Ses: {message.mediaName || 'Ses kaydı'}
                     </div>
                   </div>
@@ -230,8 +230,8 @@ const MessageItem = ({
                 
                 {message.mediaType === 'document' && (
                   <div className="flex items-center">
-                    <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-3">
-                      <svg className="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="p-1.5 sm:p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-2 sm:mr-3">
+                      <svg className="h-6 w-6 sm:h-8 sm:w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path 
                           strokeLinecap="round" 
                           strokeLinejoin="round" 
@@ -244,11 +244,11 @@ const MessageItem = ({
                       <a 
                         href={message.mediaUrl} 
                         download={message.mediaName}
-                        className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         {message.mediaName || 'Belge'}
                       </a>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                         Belgeyi indirmek için tıklayın
                       </div>
                     </div>
@@ -257,8 +257,8 @@ const MessageItem = ({
                 
                 {message.mediaType === 'unknown' && message.mediaUrl && (
                   <div className="flex items-center">
-                    <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-3">
-                      <svg className="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="p-1.5 sm:p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-2 sm:mr-3">
+                      <svg className="h-6 w-6 sm:h-8 sm:w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path 
                           strokeLinecap="round" 
                           strokeLinejoin="round" 
@@ -271,11 +271,11 @@ const MessageItem = ({
                       <a 
                         href={message.mediaUrl} 
                         download={message.mediaName}
-                        className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         {message.mediaName || 'Medya dosyası'}
                       </a>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                         Dosyayı indirmek için tıklayın
                       </div>
                     </div>
@@ -287,9 +287,9 @@ const MessageItem = ({
               <div>
                 {message.mediaName && (
                   <div className="flex items-center">
-                    <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-3">
+                    <div className="p-1.5 sm:p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-2 sm:mr-3">
                       <svg 
-                        className="h-8 w-8 text-gray-500 animate-pulse" 
+                        className="h-6 w-6 sm:h-8 sm:w-8 text-gray-500 animate-pulse" 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -333,11 +333,11 @@ const MessageItem = ({
                             });
                           }
                         }}
-                        className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        className="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         Medya dosyasını yükle: {message.mediaName}
                       </button>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                         Görüntülemek için tıklayın
                       </div>
                     </div>
@@ -346,9 +346,9 @@ const MessageItem = ({
                 
                 {!message.mediaName && (
                   <div className="flex items-center">
-                    <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-3">
+                    <div className="p-1.5 sm:p-2 rounded-full bg-gray-100 dark:bg-gray-800 mr-2 sm:mr-3">
                       <svg 
-                        className="h-8 w-8 text-gray-500" 
+                        className="h-6 w-6 sm:h-8 sm:w-8 text-gray-500" 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -396,10 +396,10 @@ const MessageItem = ({
                       </svg>
                     </div>
                     <div>
-                      <span className="text-sm font-medium">
+                      <span className="text-xs sm:text-sm font-medium">
                         Medya içeriği
                       </span>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                      <div className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                         {message.mediaType === 'image' && 'Fotoğraf'}
                         {message.mediaType === 'gif' && 'GIF'}
                         {message.mediaType === 'video' && 'Video'}
@@ -414,16 +414,16 @@ const MessageItem = ({
             )
           ) : (
             <div 
-              className={`whitespace-pre-wrap break-words ${message.isEmoji ? 'text-center' : ''}`}
+              className={`whitespace-pre-wrap break-words text-sm ${message.isEmoji ? 'text-center' : ''}`}
               dangerouslySetInnerHTML={createMarkup(message.content)}
             />
           )}
           
-          <div className={`text-right mt-1 text-xs text-gray-500 dark:text-gray-400 min-w-[65px] flex justify-end items-center gap-1`}>
+          <div className={`text-right mt-1 text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 min-w-[60px] sm:min-w-[65px] flex justify-end items-center gap-1`}>
             {formatTimestampInOriginalFormat(message.date, message.timestamp)}
             
             {isSentByMe && (
-              <svg className="w-3.5 h-3.5 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             )}
@@ -455,84 +455,147 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
         
         setFileInfo({ name: fileName, type: fileType });
         
-        // Eğer medya dosyaları varsa, IndexedDB'den yükle
-        const mediaData: Record<string, string> = {};
-        if (hasMedia) {
+        // Sohbet verilerini parse et - Bu işlem zaman alabilir, bu yüzden önce yükleme göstergesini güncelleyelim
+        setTimeout(() => {
+          // İlerleme mesajını güncelle
+          setMediaLoadingMessage('Sohbet verileri işleniyor...');
           setIsLoadingMedia(true);
-          setMediaLoadingProgress(10); // Başlangıç ilerleme değeri
+          setMediaLoadingProgress(20);
           
-          try {
-            // IndexedDB'den tüm medya anahtarlarını al
-            const db = await openWhatsAppDB();
-            const keys = await db.getAllKeys('mediaFiles');
-            const totalMediaFiles = keys.length;
+          // Sohbet verilerini parse etmeyi yeni bir setTimeout içinde yaparak UI'nin güncellenmesine izin ver
+          setTimeout(async () => {
+            // Eğer medya dosyaları varsa, IndexedDB'den yükle
+            const mediaData: Record<string, string> = {};
             
-            if (totalMediaFiles > 0) {
-              // Medya dosyalarını parça parça yükle
-              const chunkSize = 10; // Her seferinde 10 dosya yükle
-              let processed = 0;
-              
-              for (let i = 0; i < totalMediaFiles; i += chunkSize) {
-                const chunk = keys.slice(i, i + chunkSize);
+            if (hasMedia) {
+              try {
+                setMediaLoadingProgress(30);
+                setMediaLoadingMessage('Medya verileri yükleniyor...');
                 
-                // Bu grup için dosyaları yükle
-                const chunkPromises = chunk.map(async (key) => {
-                  const value = await db.get('mediaFiles', key);
-                  return { key: key.toString(), value };
-                });
+                // IndexedDB'den tüm medya anahtarlarını al
+                const db = await openWhatsAppDB();
+                const keys = await db.getAllKeys('mediaFiles');
+                const totalMediaFiles = keys.length;
                 
-                const results = await Promise.all(chunkPromises);
-                
-                // Yüklenen dosyaları mediaData'ya ekle
-                results.forEach(({ key, value }) => {
-                  if (value) {
-                    mediaData[key] = value;
-                  }
-                });
-                
-                processed += chunk.length;
-                // İlerleme yüzdesini güncelle
-                const progress = Math.round((processed / totalMediaFiles) * 90) + 10; // 10% - 100% arası
-                setMediaLoadingProgress(progress);
-                
-                // Kısa bir bekleme ekle, UI'nin güncellenmesine izin ver
-                await new Promise(resolve => setTimeout(resolve, 50));
+                if (totalMediaFiles > 0) {
+                  // Medya dosyalarını parça parça yükle
+                  const chunkSize = 20; // Her seferinde 20 dosya yükle (önceden 10'du)
+                  let processed = 0;
+                  
+                  // İlk 50 medya dosyasını öncelikli olarak yükle (sık kullanılanlar)
+                  const initialChunk = keys.slice(0, Math.min(50, totalMediaFiles));
+                  const initialChunkPromises = initialChunk.map(async (key) => {
+                    const value = await db.get('mediaFiles', key);
+                    return { key: key.toString(), value };
+                  });
+                  
+                  const initialResults = await Promise.all(initialChunkPromises);
+                  initialResults.forEach(({ key, value }) => {
+                    if (value) {
+                      mediaData[key] = value;
+                    }
+                  });
+                  
+                  processed = initialChunk.length;
+                  const progress = Math.round((processed / totalMediaFiles) * 30) + 30; // 30% - 60% arası
+                  setMediaLoadingProgress(progress);
+                  setMediaLoadingMessage(`İlk medya dosyaları yüklendi, sohbet hazırlanıyor...`);
+                  
+                  // Diğer dosyaları arka planda yüklemeye devam et
+                  setTimeout(async () => {
+                    for (let i = processed; i < totalMediaFiles; i += chunkSize) {
+                      const chunk = keys.slice(i, i + chunkSize);
+                      
+                      // Bu grup için dosyaları yükle
+                      const chunkPromises = chunk.map(async (key) => {
+                        const value = await db.get('mediaFiles', key);
+                        return { key: key.toString(), value };
+                      });
+                      
+                      const results = await Promise.all(chunkPromises);
+                      
+                      // Yüklenen dosyaları mediaData'ya ekle
+                      results.forEach(({ key, value }) => {
+                        if (value) {
+                          mediaData[key] = value;
+                        }
+                      });
+                      
+                      processed += chunk.length;
+                      // İlerleme yüzdesini güncelle
+                      const progress = Math.round((processed / totalMediaFiles) * 30) + 60; // 60% - 90% arası
+                      setMediaLoadingProgress(progress);
+                      setMediaLoadingMessage(`Medya dosyaları yükleniyor (${processed}/${totalMediaFiles})...`);
+                      
+                      // Kısa bir bekleme ekle, UI'nin güncellenmesine izin ver
+                      if (i + chunkSize < totalMediaFiles) {
+                        await new Promise(resolve => setTimeout(resolve, 10));
+                      }
+                    }
+                    
+                    setMediaLoadingProgress(100);
+                    setMediaLoadingMessage('Tüm medya dosyaları yüklendi!');
+                    
+                    // Tamamlandıktan 500ms sonra yükleme göstergesini kaldır
+                    setTimeout(() => setIsLoadingMedia(false), 500);
+                  }, 100);
+                }
+              } catch (err) {
+                console.error('Medya dosyaları yüklenirken hata oluştu:', err);
               }
             }
             
-            setMediaLoadingProgress(100);
-            // Tamamlandıktan 500ms sonra yükleme göstergesini kaldır
-            setTimeout(() => setIsLoadingMedia(false), 500);
-          } catch (err) {
-            console.error('Medya dosyaları yüklenirken hata oluştu:', err);
-            setIsLoadingMedia(false);
-          }
-        }
+            // Media verileri önceden hazır olsun
+            setMediaFiles(mediaData);
+            
+            // Parse işlemini ayrı bir web worker veya farklı bir thread üzerinde yapmak daha iyi olabilir,
+            // ancak setTimeout ile ana thread'i bloke etmeden UI güncellemelerine izin verelim
+            setTimeout(() => {
+              try {
+                setMediaLoadingMessage('Sohbet mesajları hazırlanıyor...');
+                setMediaLoadingProgress(80);
+                
+                // Sohbet verilerini parse et
+                const parsedData = parseWhatsAppChat(storedData, mediaData);
+                setChatData(parsedData);
+                
+                // Grup sohbeti ise otomatik olarak herkesi seç
+                if (parsedData.isGroup) {
+                  setSelectedParticipant('all');
+                }
+                
+                // Kullanıcı kimliğini belirle
+                if (storedUserIdentity && parsedData.participants.includes(storedUserIdentity)) {
+                  setCurrentUserIdentity(storedUserIdentity);
+                } else if (parsedData.participants.length > 0) {
+                  // Varsayılan olarak ilk kullanıcıyı seç
+                  setCurrentUserIdentity(parsedData.participants[0]);
+                  localStorage.setItem('whatsapp_current_user', parsedData.participants[0]);
+                }
+                
+                setMediaLoadingProgress(100);
+                setMediaLoadingMessage('Sohbet yüklendi!');
+                
+                // Tamamlandıktan kısa bir süre sonra yükleme göstergesini kaldır
+                setTimeout(() => {
+                  setIsLoadingMedia(false);
+                  setLoading(false);
+                }, 500);
+              } catch (error) {
+                console.error('Sohbet parse edilirken hata:', error);
+                setError('Sohbet verileri işlenirken bir hata oluştu.');
+                setIsLoadingMedia(false);
+                setLoading(false);
+              }
+            }, 100);
+            
+          }, 100);
+        }, 50);
         
-        setMediaFiles(mediaData);
-        
-        // Sohbet verilerini parse et
-        const parsedData = parseWhatsAppChat(storedData, mediaData);
-        setChatData(parsedData);
-        
-        // Grup sohbeti ise otomatik olarak herkesi seç
-        if (parsedData.isGroup) {
-          setSelectedParticipant('all');
-        }
-        
-        // Kullanıcı kimliğini belirle
-        if (storedUserIdentity && parsedData.participants.includes(storedUserIdentity)) {
-          setCurrentUserIdentity(storedUserIdentity);
-        } else if (parsedData.participants.length > 0) {
-          // Varsayılan olarak ilk kullanıcıyı seç
-          setCurrentUserIdentity(parsedData.participants[0]);
-          localStorage.setItem('whatsapp_current_user', parsedData.participants[0]);
-        }
-        
-        setLoading(false);
       } catch (err) {
         console.error('Sohbet verileri yüklenirken hata oluştu:', err);
         setError('Sohbet verileri işlenirken bir hata oluştu.');
+        setIsLoadingMedia(false);
         setLoading(false);
       }
     };
@@ -800,8 +863,8 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
   
   // Aşağı kaydırma fonksiyonu
   const scrollToBottom = () => {
-    if (lastMessageRef.current) {
-      lastMessageRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
   
@@ -869,6 +932,38 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
     }
   }, [showUserSelectDialog]);
   
+  // Sohbet verileri yüklendiğinde ve mesajlar render edildiğinde en alta kaydır
+  useEffect(() => {
+    if (chatData && !loading && chatContainerRef.current) {
+      // Sayfa yüklendikten sonra en alta kaydır
+      setTimeout(() => {
+        scrollToBottom();
+      }, 100);
+    }
+  }, [chatData, loading]);
+
+  // Kaydırma işlemini izle
+  useEffect(() => {
+    const handleScroll = () => {
+      if (chatContainerRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = chatContainerRef.current;
+        const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
+        setShowScrollButton(!isNearBottom);
+      }
+    };
+
+    const chatContainer = chatContainerRef.current;
+    if (chatContainer) {
+      chatContainer.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (chatContainer) {
+        chatContainer.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-[#0a0a0a]">
@@ -881,7 +976,13 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
             </div>
           </div>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">Sohbet Yükleniyor</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">Sohbet verileri aktarılıyor, lütfen bekleyin...</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">Sohbet verileri hazırlanıyor, lütfen bekleyin...</p>
+          
+          {/* İlerleme çubuğu ekle */}
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-6">
+            <div className="bg-emerald-500 h-2.5 rounded-full transition-all duration-300" style={{ width: `${mediaLoadingProgress}%` }}></div>
+          </div>
+          
           <div className="flex items-center justify-center space-x-3">
             <div className="w-3 h-3 rounded-full bg-emerald-500 animate-bounce" style={{ animationDelay: '0s' }}></div>
             <div className="w-3 h-3 rounded-full bg-emerald-500 animate-bounce" style={{ animationDelay: '0.2s' }}></div>
@@ -931,17 +1032,58 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
         </div>
       )}
       
+      {/* Dropdown Menüsü - DOM'da üst seviyeye taşındı */}
+      {showMenu && (
+        <div 
+          className="fixed right-4 sm:right-5 top-14 sm:top-16 w-64 bg-white dark:bg-[#111111] rounded-xl shadow-2xl z-[9999] overflow-hidden border border-gray-100 dark:border-gray-800/50"
+          style={{ pointerEvents: 'auto' }} 
+          data-menu="dropdown"
+        >
+          <div className="py-1">
+            <button 
+              type="button"
+              className="flex items-center px-4 py-3 w-full text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-colors"
+              onClick={() => {
+                setShowUserSelectDialog(true);
+                setShowMenu(false);
+              }}
+              id="change-identity-btn"
+            >
+              <svg className="w-5 h-5 mr-3 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Kimliğinizi Değiştirin
+            </button>
+            <button 
+              type="button"
+              className="flex items-center px-4 py-3 w-full text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-colors"
+              onClick={() => window.location.href = '/'}
+            >
+              <svg className="w-5 h-5 mr-3 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Ana Sayfaya Dön
+            </button>
+            <div className="border-t border-gray-200 dark:border-gray-800/50 my-1"></div>
+            <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400">
+              <p>Tüm veriler cihazınızda saklanır.</p>
+              <p>Hiçbir veri sunucuya gönderilmez.</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Header */}
       <header className="bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-700 dark:to-teal-600 text-white shadow-lg z-10 relative backdrop-blur-sm">
-        <div className="flex items-center justify-between w-full px-5 py-4">
-          <div className="flex items-center flex-1 gap-4">
+        <div className="flex items-center justify-between w-full px-3 sm:px-5 py-3 sm:py-4">
+          <div className="flex items-center flex-1 gap-2 sm:gap-4 min-w-0">
             <Link 
               href="/" 
-              className="text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200 flex items-center justify-center"
+              className="text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200 flex items-center justify-center flex-shrink-0"
               aria-label="Ana sayfaya dön"
             >
               <svg 
-                className="h-5 w-5" 
+                className="h-4 w-4 sm:h-5 sm:w-5" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
@@ -955,34 +1097,34 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
               </svg>
             </Link>
             
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center shadow-inner">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center shadow-inner flex-shrink-0">
                 {chatData?.isGroup ? (
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 ) : (
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 )}
               </div>
               
               <div className="flex-1 min-w-0">
-                <h1 className="text-lg font-semibold leading-tight truncate drop-shadow-sm">
+                <h1 className="text-base sm:text-lg font-semibold leading-tight truncate drop-shadow-sm">
                   {chatData?.isGroup && chatData.groupName 
                     ? chatData.groupName 
                     : fileInfo.name.replace(/\.(txt|zip)$/i, '')}
                 </h1>
                 <div className="text-xs opacity-90 flex items-center truncate">
-                  <div className="truncate flex items-center gap-2">
+                  <div className="truncate flex items-center gap-1 sm:gap-2">
                     {currentUserIdentity && (
-                      <span className="inline-flex items-center bg-white/20 backdrop-blur-sm text-xs px-2 py-0.5 rounded-full">
+                      <span className="inline-flex items-center bg-white/20 backdrop-blur-sm text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
                         <span className="w-1.5 h-1.5 bg-emerald-300 rounded-full mr-1 animate-pulse"></span>
-                        Siz: {currentUserIdentity}
+                        <span className="truncate max-w-[70px] sm:max-w-[100px]">Siz: {currentUserIdentity}</span>
                       </span>
                     )}
-                    <span className="truncate flex items-center gap-1">
+                    <span className="truncate flex items-center gap-1 hidden xs:inline-flex">
                       <svg className="w-3 h-3 opacity-75" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
@@ -1000,7 +1142,7 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
             </div>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle />
             
             <div className="relative" ref={menuRef}>
@@ -1009,46 +1151,10 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200"
                 aria-label="Menü"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                 </svg>
               </button>
-              
-              {showMenu && (
-                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-[#111111] rounded-xl shadow-xl z-50 overflow-hidden border border-gray-100 dark:border-gray-800/50" data-menu="dropdown">
-                  <div className="py-1">
-                    <button 
-                      type="button"
-                      className="flex items-center px-4 py-3 w-full text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-colors"
-                      onClick={() => {
-                        setShowUserSelectDialog(true);
-                        setShowMenu(false);
-                      }}
-                      id="change-identity-btn"
-                    >
-                      <svg className="w-5 h-5 mr-3 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                      Kimliğinizi Değiştirin
-                    </button>
-                    <button 
-                      type="button"
-                      className="flex items-center px-4 py-3 w-full text-left text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#1a1a1a] transition-colors"
-                      onClick={() => window.location.href = '/'}
-                    >
-                      <svg className="w-5 h-5 mr-3 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                      </svg>
-                      Ana Sayfaya Dön
-                    </button>
-                    <div className="border-t border-gray-200 dark:border-gray-800/50 my-1"></div>
-                    <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400">
-                      <p>Tüm veriler cihazınızda saklanır.</p>
-                      <p>Hiçbir veri sunucuya gönderilmez.</p>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -1056,11 +1162,11 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
       
       {/* Grup sohbeti ise, katılımcı seçme */}
       {chatData?.isGroup && (
-        <div className="bg-white dark:bg-[#111111] px-4 py-2 border-b dark:border-gray-800/50 flex items-center overflow-x-auto scrollbar-hide z-10 relative">
+        <div className="bg-white dark:bg-[#111111] px-2 sm:px-4 py-2 border-b dark:border-gray-800/50 flex items-center overflow-x-auto scrollbar-hide z-10 relative">
           <div className="flex space-x-2 items-center">
             <button
               onClick={() => setSelectedParticipant('all')}
-              className={`flex-shrink-0 px-3 py-1 text-sm rounded-full transition-colors ${
+              className={`flex-shrink-0 px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full transition-colors ${
                 selectedParticipant === 'all' || !selectedParticipant
                   ? 'bg-emerald-600 text-white'
                   : 'bg-gray-200 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-800'
@@ -1073,7 +1179,7 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
               <button
                 key={participant}
                 onClick={() => setSelectedParticipant(participant)}
-                className={`flex-shrink-0 px-3 py-1 text-sm rounded-full transition-colors ${
+                className={`flex-shrink-0 px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full transition-colors ${
                   selectedParticipant === participant
                     ? 'bg-emerald-600 text-white'
                     : 'bg-gray-200 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-800'
@@ -1088,14 +1194,14 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
       
       {/* Kullanıcı seçme modal dialog */}
       {showUserSelectDialog && chatData && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 p-4">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 p-2 sm:p-4">
           <div 
             ref={modalRef}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6 animate-fade-in relative"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-4 sm:p-6 animate-fade-in relative"
           >
             <button
               onClick={() => setShowUserSelectDialog(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
               aria-label="Kapat"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1103,29 +1209,29 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
               </svg>
             </button>
             
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Kimliğinizi Seçin</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white mb-3 sm:mb-4">Kimliğinizi Seçin</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
               Sohbette hangi kullanıcı olduğunuzu seçin. Bu, mesajlarınızın hangi tarafta görüntüleneceğini belirler.
             </p>
             
-            <div className="space-y-2 mb-6 max-h-[40vh] overflow-y-auto pr-2">
+            <div className="space-y-2 mb-5 sm:mb-6 max-h-[40vh] overflow-y-auto pr-2">
               {chatData.participants.map(participant => (
                 <button
                   key={participant}
                   onClick={() => changeUserIdentity(participant)}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors flex items-center ${
+                  className={`w-full text-left px-3 sm:px-4 py-2 sm:py-3 rounded-lg transition-colors flex items-center ${
                     participant === currentUserIdentity
                       ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700'
                       : 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
                 >
-                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-500/20 flex items-center justify-center mr-2 sm:mr-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-gray-800 dark:text-white">{participant}</div>
+                    <div className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">{participant}</div>
                     {participant === currentUserIdentity && (
                       <div className="text-xs text-emerald-600 dark:text-emerald-400">Şu anda seçili</div>
                     )}
@@ -1154,18 +1260,18 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
       {/* Medya dosyası önizleme */}
       {showMediaPreview && (
         <div 
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-2 sm:p-4"
           onClick={closeMediaPreview}
         >
           <div 
-            className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-lg p-2 shadow-2xl"
+            className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-gray-800 rounded-lg p-1 sm:p-2 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
-              className="absolute -top-10 right-0 text-white p-2 hover:bg-white/10 rounded-full"
+              className="absolute -top-8 sm:-top-10 right-0 text-white p-2 hover:bg-white/10 rounded-full"
               onClick={closeMediaPreview}
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -1197,12 +1303,12 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
                 Tarayıcınız ses dosyası oynatmayı desteklemiyor.
               </audio>
             ) : (
-              <div className="p-4 text-center">
+              <div className="p-3 sm:p-4 text-center">
                 <p>Bu medya türü görüntülenemiyor.</p>
                 <a 
                   href={showMediaPreview} 
                   download 
-                  className="mt-2 inline-block px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="mt-2 inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
                 >
                   Dosyayı İndir
                 </a>
@@ -1214,15 +1320,15 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
       
       {/* Chat mesajları */}
       <div ref={chatContainerRef} className="flex-grow overflow-y-auto z-10 relative">
-        <div className="max-w-3xl mx-auto p-4 pb-16">
+        <div className="max-w-3xl mx-auto p-2 sm:p-4 pb-16">
           {/* Bellek optimizasyonu için yalnızca görünür mesajları işleme */}
           {filteredMessages && filteredMessages.length > displayedMessageCount ? (
             // Sınırlı sayıda mesaj göster (varsayılan olarak 200, sonra 75'er 75'er artar)
             <>
-              <div className="my-4 text-center flex flex-col items-center gap-2">
+              <div className="my-3 sm:my-4 text-center flex flex-col items-center gap-2">
                 <button 
                   onClick={loadMoreMessages}
-                  className="text-xs bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full shadow-sm hover:bg-emerald-200 dark:hover:bg-emerald-800/30 transition-all"
+                  className="text-xs bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm hover:bg-emerald-200 dark:hover:bg-emerald-800/30 transition-all"
                 >
                   Daha eski mesajları yükle (75 mesaj daha)
                 </button>
@@ -1230,23 +1336,23 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
                 <div className="relative inline-block">
                   <button 
                     onClick={() => setShowWarning(!showWarning)}
-                    className="text-xs bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 px-4 py-2 rounded-full shadow-sm hover:bg-amber-200 dark:hover:bg-amber-800/30 flex items-center transition-all"
+                    className="text-xs bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm hover:bg-amber-200 dark:hover:bg-amber-800/30 flex items-center transition-all"
                   >
                     Tümünü göster ({filteredMessages.length - displayedMessageCount} mesaj daha)
-                    <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </button>
                   
                   {showWarning && (
-                    <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 bg-white dark:bg-[#111111] text-xs text-red-600 dark:text-red-400 p-4 rounded-xl shadow-xl border border-red-200 dark:border-red-900/30">
+                    <div className="absolute z-50 bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-60 sm:w-64 bg-white dark:bg-[#111111] text-xs text-red-600 dark:text-red-400 p-3 sm:p-4 rounded-xl shadow-xl border border-red-200 dark:border-red-900/30">
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-3 rotate-45 bg-white dark:bg-[#111111] border-b border-r border-red-200 dark:border-red-900/30"></div>
                       <p className="font-medium mb-1">Uyarı!</p>
                       <p>Tüm mesajları yüklemek tarayıcı önbelleğinin dolmasına ve uygulama performansının düşmesine neden olabilir.</p>
                       <div className="mt-2 flex justify-end">
                         <button 
                           onClick={loadAllMessages}
-                          className="text-xs bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 px-3 py-1.5 rounded-lg hover:bg-red-200 dark:hover:bg-red-800/30 transition-all"
+                          className="text-xs bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg hover:bg-red-200 dark:hover:bg-red-800/30 transition-all"
                         >
                           Yine de yükle
                         </button>
@@ -1325,19 +1431,14 @@ export default function ChatPage() {  const [chatData, setChatData] = useState<P
       {showScrollButton && (
         <button 
           onClick={scrollToBottom}
-          className="absolute bottom-6 right-6 z-20 rounded-full bg-white dark:bg-gray-800 w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20 rounded-full bg-white dark:bg-gray-800 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
           aria-label="Aşağı kaydır"
         >
-          <svg className="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </button>
       )}
-      
-      {/* Gizlilik hatırlatıcı banner */}
-      <div className="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 bg-opacity-90 dark:bg-opacity-90 shadow-md z-20 p-2 text-xs text-gray-600 dark:text-gray-400 text-center">
-        <p>Tüm veriler cihazınızda saklanır. Hiçbir veri sunucuya gönderilmez veya toplanmaz.</p>
-      </div>
     </div>
   );
 } 

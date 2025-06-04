@@ -1,5 +1,5 @@
 {
-  "name": "whatsapp-sohbet-goruntleyici",
+  "name": "wcv",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -16,16 +16,20 @@
     "next": "15.3.2",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-window": "^1.8.11",
+    "web-worker-proxy": "^0.5.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-window": "^1.8.8",
     "autoprefixer": "^10.4.16",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "react-virtualized-auto-sizer": "^1.0.26",
     "tailwindcss": "3.4.1",
     "typescript": "^5"
   },
