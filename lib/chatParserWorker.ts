@@ -1,5 +1,5 @@
 // Web Worker for parsing WhatsApp chat
-import { parseWhatsAppChat, ChatMessage, ParsedChat } from './chatParser';
+import { parseWhatsAppChat } from './chatParser';
 
 // Worker tarafından alınacak mesaj türü
 type WorkerMessage = {
