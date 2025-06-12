@@ -116,5 +116,3 @@ Eğer bu proje işinize yaradıysa ve geliştirme çalışmalarını desteklemek
 </p>
 
 ---
-
-Oluşturucu: [Adınız] - [Web siteniz/GitHub profiliniz]
