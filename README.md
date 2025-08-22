@@ -1,4 +1,4 @@
-# WhatsApp Sohbet Görüntüleyici
+# WhatsApp Sohbet Görüntüleyici - Update
 
 > **ÖNEMLİ GİZLİLİK BİLGİSİ**: Bu uygulama tüm verileri yalnızca tarayıcınızın yerel depolama alanında ve IndexedDB'de saklar. Hiçbir veri sunucuya gönderilmez veya bulutta depolanmaz. Sohbet verileriniz ve medya dosyalarınız daima cihazınızda kalır.
 
